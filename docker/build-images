@@ -1,0 +1,10 @@
+#!/bin/bash
+
+docker build -t kafka-event-sourcing-app/kafka kafka/
+docker build -t kafka-event-sourcing-app/zookeeper zookeeper
+docker build -t kafka-event-sourcing-app/demo-api-gateway-service ../demo-api-gateway-service
+docker build -t kafka-event-sourcing-app/demo-api-discovery ../demo-api-discovery-service
+docker build -t kafka-event-sourcing-app/demo-api-command ../demo-api-command
+docker build -t kafka-event-sourcing-app/demo-api-query ../demo-api-query
+docker build -t kafka-event-sourcing-app/demo-api-zipkin-service ../demo-api-zipkin-service
+docker build -t kafka-event-sourcing-app/demo-api-config-service ../demo-api-config-service

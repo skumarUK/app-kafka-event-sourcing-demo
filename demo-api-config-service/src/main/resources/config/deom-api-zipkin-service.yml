@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: demo-api-zipkin-service
+server:
+  port: 9411
+
+
+eureka:
+  client:
+    enabled: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+    registryFetchIntervalSeconds: 5
+
+  instance:
+    appname: demo-api-zipkin-service
+    preferIpAddress: true
+
+
+
+logging:
+  level:
+    org.springframework.web: DEBUG

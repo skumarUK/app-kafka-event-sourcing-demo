@@ -1,0 +1,10 @@
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/DueDateAssigned.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/ItemMovedToList.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/TagRemoved.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/EventHandler.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/ItemCreated.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/Item.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/TagAssigned.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/ItemConcluded.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/ItemEvent.java
+/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-common/src/main/java/demo/api/common/domain/event/RequiredTimeAssigned.java

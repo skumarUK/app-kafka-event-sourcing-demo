@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: demo-api-config-service
+server:
+ port: 8088

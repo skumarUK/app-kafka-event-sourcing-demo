@@ -1,0 +1,56 @@
+version: '2'
+services:
+  zookeeper:
+    image: kafka-event-sourcing-app/zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: kafka-event-sourcing-app/kafka
+    links:
+      - zookeeper
+    environment:
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_NUM_PARTITIONS: 5
+      KAFKA_CREATE_TOPICS: "topic-kafka-demo-topic:5:1"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  discovery:
+    image: kafka-event-sourcing-app/demo-api-discovery
+    ports:
+      - "8761:8761"
+    environment:
+      eureka.instance.hostname: discovery
+  gateway:
+    image: kafka-event-sourcing-app/demo-api-gateway-service
+    links:
+      - demo-api-discovery-service
+      - demo-api-command
+      - demo-api-query
+    ports:
+      - "8765:8765"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka
+  demo-api-command:
+    image: kafka-event-sourcing-app/demo-api-command
+    links:
+      - discovery
+    ports:
+      - "8090:8090"
+    environment:
+      SERVER_PORT: 8090
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka:9092
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka/
+  demo-api-query:
+    image: kafka-event-sourcing-app/demo-api-query
+    links:
+      - discovery
+    ports:
+      - "8089:8089"
+    environment:
+      SERVER_PORT: 8089
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka/

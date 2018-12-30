@@ -1,0 +1,8 @@
+demo/api/discovery/service/kafka/ItemEventConsumer.class
+demo/api/discovery/service/api/ItemsQueryResource.class
+demo/api/common/domain/ItemView.class
+demo/api/discovery/service/GtdQueryApplication.class
+demo/api/common/domain/ItemUpdater.class
+demo/api/common/domain/DefaultItemView.class
+demo/api/common/domain/ItemRepository.class
+demo/api/discovery/service/api/ItemQueryResource.class
