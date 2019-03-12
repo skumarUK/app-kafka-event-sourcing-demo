@@ -1,8 +1,0 @@
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/discovery/service/GtdQueryApplication.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/common/domain/ItemRepository.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/discovery/service/kafka/ItemEventConsumer.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/common/domain/ItemView.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/discovery/service/api/ItemQueryResource.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/common/domain/DefaultItemView.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/discovery/service/api/ItemsQueryResource.java
-/home/osboxes/Downloads/app-kafka-event-sourcing-demo/demo-api-query/src/main/java/demo/api/common/domain/ItemUpdater.java

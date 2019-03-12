@@ -6,28 +6,27 @@
 
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter</artifactId>
-        <version>2.1.1.RELEASE</version>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.7.RELEASE</version>
         <relativePath/>
     </parent>
 
     <groupId>demo.app</groupId>
-    <artifactId>demo-app</artifactId>
+    <artifactId>demo-app-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Demo Parent App</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
+        <skip.docker.build>true</skip.docker.build>
         <junit.version>4.12</junit.version>
         <hamcrest.version>1.3</hamcrest.version>
         <slf4j.version>1.7.22</slf4j.version>
-        <spring.kafka.version>2.2.2.RELEASE</spring.kafka.version>
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <spring.kafka.version>2.1.10.RELEASE</spring.kafka.version>
+        <spring-cloud.version>Finchley.RC2</spring-cloud.version>
         <avro.version>1.8.2</avro.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-
         <plugin.avro.version>1.8.2</plugin.avro.version>
         <plugin.compiler.version>3.5</plugin.compiler.version>
     </properties>
@@ -46,12 +45,15 @@
     <modules>
         <module>demo-api-codec</module>
         <module>demo-api-common</module>
-        <module>demo-api-command</module>
-        <module>demo-api-query</module>
-        <module>demo-api-gateway-service</module>
-        <module>demo-api-discovery-service</module>
-        <module>demo-api-zipkin-service</module>
-        <module>demo-api-config-service</module>
+        <module>demo-api-command-service</module>
+        <module>demo-api-query-service</module>
+        <module>demo-api-central-zipkin-service</module>
+        <module>demo-api-central-gateway-service</module>
+        <module>demo-api-central-discovery-service</module>
+        <module>demo-api-hystrix-aggregator-service</module>
+        <module>demo-api-central-docs-service</module>
+        <module>demo-api-central-config-service</module>
+        <module>demo-api-central-auth-service</module>
     </modules>
 
     <build>

@@ -1,0 +1,17 @@
+---
+spring:
+  application:
+    name: demo-api-hystrix-aggregator-service
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: true
+        serviceId: demo-api-central-config-service
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port:9080}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

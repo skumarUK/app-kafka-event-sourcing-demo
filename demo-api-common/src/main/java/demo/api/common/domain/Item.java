@@ -1,6 +1,7 @@
 package demo.api.common.domain;
 
 import demo.api.common.domain.event.*;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ITEM")
+@Getter
 public class Item implements Serializable {
 
     @Id
@@ -45,32 +47,8 @@ public class Item implements Serializable {
         this.tags = new ArrayList<>();
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public boolean isDone() {
-        return done;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public int getRequiredTime() {
-        return requiredTime;
-    }
-
-    public Date getDueDate() {
-        return dueDate;
-    }
-
     public List<String> getTags() {
         return Collections.unmodifiableList(tags);
-    }
-
-    public String getAssociatedList() {
-        return associatedList;
     }
 
     /**

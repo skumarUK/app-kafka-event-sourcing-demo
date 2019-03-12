@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: demo-api-command-service
+  cloud:
+    config:
+      discovery:
+        service-id: demo-api-central-config-service
+        enabled: true
+      fail-fast: false
+eureka:
+  client:
+    service-url:
+      default-zone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

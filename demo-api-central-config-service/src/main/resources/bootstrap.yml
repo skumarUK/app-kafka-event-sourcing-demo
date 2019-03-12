@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: demo-api-central-config-service
+
+#encrypt:
+#  key-store:
+#    location: classpath:config-server.jks
+#    password: skumar
+#    alias: config-server-key
+#    secret: skumar
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

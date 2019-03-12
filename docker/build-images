@@ -1,10 +1,12 @@
 #!/bin/bash
 
-docker build -t kafka-event-sourcing-app/kafka kafka/
-docker build -t kafka-event-sourcing-app/zookeeper zookeeper
-docker build -t kafka-event-sourcing-app/demo-api-gateway-service ../demo-api-gateway-service
-docker build -t kafka-event-sourcing-app/demo-api-discovery ../demo-api-discovery-service
-docker build -t kafka-event-sourcing-app/demo-api-command ../demo-api-command
-docker build -t kafka-event-sourcing-app/demo-api-query ../demo-api-query
-docker build -t kafka-event-sourcing-app/demo-api-zipkin-service ../demo-api-zipkin-service
-docker build -t kafka-event-sourcing-app/demo-api-config-service ../demo-api-config-service
+#docker build -t kafka-event-sourcing-app/kafka kafka/
+#docker build -t kafka-event-sourcing-app/trifecta trifecta/
+#docker build -t kafka-event-sourcing-app/zookeeper zookeeper/
+#docker build -t kafka-event-sourcing-app/kafka-manager kafka-manager
+#docker build -t kafka-event-sourcing-app/demo-api-central-gateway-service ../demo-api-gateway-service
+#docker build -t kafka-event-sourcing-app/demo-api-central-discovery-service ../demo-api-central-discovery-service
+#docker build -t kafka-event-sourcing-app/demo-api-command-service ../demo-api-command-service
+#docker build -t kafka-event-sourcing-app/demo-api-query-service ../demo-api-query-service
+docker build -t kafka-event-sourcing-app/demo-api-central-zipkin-service ../demo-api-central-zipkin-service
+#docker build -t kafka-event-sourcing-app/demo-api-central-config-service ../demo-api-central-config-service

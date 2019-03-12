@@ -1,0 +1,12 @@
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\domain\DefaultItemView.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\api\hystrix\fallbacks\ItemsFallBack.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\DemoAPIQueryApplication.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\feign\headers\FeignHeaderConfiguration.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\domain\ItemUpdater.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\kafka\ItemEventConsumer.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\domain\ItemRepository.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\api\config\ApiDocumentationConfig.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\feign\interceptors\FeignRequestInterceptor.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\domain\ItemView.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\api\ItemsQueryResource.java
+C:\Work\git\app-kafka-event-sourcing-demo\demo-api-query-service\src\main\java\demo\api\query\service\api\client\ItemClient.java

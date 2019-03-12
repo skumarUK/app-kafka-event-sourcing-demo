@@ -1,0 +1,59 @@
+server:
+  port: 8088
+
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+
+spring:
+  kafka:
+    bootstrapServers: kafka:9092
+    consumer:
+      groupId: kafka-demo-group-query
+      keyDeserializer: org.apache.kafka.common.serialization.StringDeserializer
+      valueDeserializer: demo.api.command.service.kafka.serialization.ItemEventDeserializer
+      autoOffsetReset: latest
+      enableAutoCommit: false
+      isolationLevel: read_committed
+    listener:
+      ackMode: MANUAL
+  cloud:
+    bus:
+      enabled: true
+    config:
+      server:
+        git:
+          uri: https://github.com/skumarUK/demo-config-files
+          skip-ssl-validation: true
+          clone-on-start: true
+          basedir:
+            - target/clone
+          search-paths:
+           - classpath:config/{application},classpath:config/global.yml
+
+#        native:
+#         search-locations:
+#              - classpath:/config/{application},classpath:config/global.yml
+    stream:
+      kafka:
+        binder:
+          brokers: 'kafka:9092'
+
+#  profiles:
+#    active: native
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "refresh", "monitor"]

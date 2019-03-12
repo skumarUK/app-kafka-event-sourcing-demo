@@ -1,56 +1,83 @@
 version: '2'
+
+networks:
+  sb:
+    driver: bridge
+
 services:
   zookeeper:
     image: kafka-event-sourcing-app/zookeeper
+    hostname: zookeeper
+    networks:
+      - sb
     ports:
       - "2181:2181"
+    volumes:
+      - ./zookeeper-logs/data:/data
+      - ./zookeeper-logs/datalog:/datalog
   kafka:
     image: kafka-event-sourcing-app/kafka
+    ports:
+      - "9092:9092"
+    networks:
+      - sb
     links:
       - zookeeper
+
     environment:
       KAFKA_ADVERTISED_PORT: 9092
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 32000
       KAFKA_DEFAULT_REPLICATION_FACTOR: 1
       KAFKA_NUM_PARTITIONS: 5
       KAFKA_CREATE_TOPICS: "topic-kafka-demo-topic:5:1"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - ./kafka-logs/var/run/docker.sock:/var/run/docker.sock
+      - ./kafka-logs/data:/data
+      - ./kafka-logs/datalog:/datalog
+
+  trifecta:
+    image: kafka-event-sourcing-app/trifecta
+    ports:
+      - "9000:9000"
+    environment:
+          ZK_HOST: zookeeper:2181
+    networks:
+      - sb
+    links:
+      - zookeeper
+  
   discovery:
-    image: kafka-event-sourcing-app/demo-api-discovery
+    image: kafka-event-sourcing-app/demo-api-central-discovery-service
     ports:
       - "8761:8761"
-    environment:
-      eureka.instance.hostname: discovery
-  gateway:
-    image: kafka-event-sourcing-app/demo-api-gateway-service
-    links:
-      - demo-api-discovery-service
-      - demo-api-command
-      - demo-api-query
+    hostname: discovery
+    networks:
+      - sb
+
+  config:
+    image: kafka-event-sourcing-app/demo-api-central-config-service
     ports:
-      - "8765:8765"
+      - "8088:8088"
+    networks:
+      - sb
+    hostname: config
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka
-  demo-api-command:
-    image: kafka-event-sourcing-app/demo-api-command
+      eureka.host: discovery
     links:
-      - discovery
-    ports:
-      - "8090:8090"
+      - kafka
+    volumes:
+      - ./configRepo/:/target/clone
+
+  zipkin:
+    image: kafka-event-sourcing-app/demo-api-central-zipkin-service
+    hostname: zipkin
     environment:
-      SERVER_PORT: 8090
-      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      SPRING_KAFKA_PRODUCER_BOOTSTRAP_SERVERS: kafka:9092
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka/
-  demo-api-query:
-    image: kafka-event-sourcing-app/demo-api-query
-    links:
-      - discovery
+      eureka.host: discovery
+    networks:
+      - sb    
     ports:
-      - "8089:8089"
-    environment:
-      SERVER_PORT: 8089
-      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka/
+      - "9411:9411"

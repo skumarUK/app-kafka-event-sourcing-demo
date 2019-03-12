@@ -1,0 +1,12 @@
+demo\api\query\service\feign\interceptors\FeignRequestInterceptor.class
+demo\api\query\domain\ItemUpdater.class
+demo\api\query\service\api\config\ApiDocumentationConfig.class
+demo\api\query\service\api\hystrix\fallbacks\ItemsFallBack.class
+demo\api\query\service\api\ItemsQueryResource.class
+demo\api\query\service\feign\headers\FeignHeaderConfiguration.class
+demo\api\query\service\kafka\ItemEventConsumer.class
+demo\api\query\domain\DefaultItemView.class
+demo\api\query\domain\ItemView.class
+demo\api\query\domain\ItemRepository.class
+demo\api\query\service\api\client\ItemClient.class
+demo\api\query\service\DemoAPIQueryApplication.class
